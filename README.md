@@ -6,6 +6,7 @@ The aim is to show how trading concepts such as volatility, trend structure, and
 
 This is not financial advice and not a complete trading system. It is a research example designed to demonstrate how theory can become a practical framework.
 
+This project is part of my attempt to bridge trading theory, practical coding, and applied quantitative research.
 ---
 
 ## Why This Project Exists
