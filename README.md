@@ -38,7 +38,7 @@ quant-without-a-tie-applied-regime-detection/
     ├── regime_detector.py
     └── example_usage.py
 ```
-How It Works
+## How It Works
 
 The regime detector calculates:
 
@@ -55,7 +55,7 @@ trend_expansion
 volatile_or_breakdown
 low_volatility
 neutral
-How to Run
+## How to Run
 
 Clone the repository:
 
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 Run the example:
 
 python src/example_usage.py
-Example Usage
+## Example Usage
 import pandas as pd
 from src.regime_detector import detect_regime
 
@@ -81,7 +81,7 @@ df = pd.read_csv("data/sample_ohlcv.csv")
 regime_df = detect_regime(df)
 
 print(regime_df.tail())
-Example Output
+## Example Output
 
 The script adds additional columns to the original price data, including:
 
@@ -95,7 +95,7 @@ regime
 
 These columns can then be used for further research, backtesting, or trading system development.
 
-Philosophy
+## Philosophy
 
 This project prioritises:
 
@@ -106,7 +106,7 @@ Clear research logic over overfitted signals
 
 The purpose is to show how a trading idea can move from concept to code.
 
-Future Improvements
+## Future Improvements
 
 Possible future additions include:
 
@@ -115,7 +115,7 @@ Connecting the detector to a backtest
 Adding visual regime charts
 Testing the logic across multiple FX symbols
 Comparing regime behaviour across different timeframes
-Disclaimer
+## Disclaimer
 
 This project is for educational and research purposes only.
 
