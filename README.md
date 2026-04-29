@@ -119,6 +119,13 @@ The script adds additional columns to the original price data, including:
 
 These columns can then be used for further research, backtesting, or trading system development.
 
+## Visual Example (Optional)
+
+Below is a simple illustration of how regimes can be visualised:
+
+- Trend expansion periods
+- Low volatility compression
+- Breakdown / unstable phases
 ---
 
 ## Philosophy
