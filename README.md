@@ -37,7 +37,7 @@ quant-without-a-tie-applied-regime-detection/
 └── src/
     ├── regime_detector.py
     └── example_usage.py
-
+```
 How It Works
 
 The regime detector calculates:
