@@ -11,15 +11,30 @@ import pandas as pd
 from regime_detector import detect_regime
 
 
-def main() -> None:
+def load_sample_data() -> pd.DataFrame:
+    """Load the sample OHLCV data used in this repository."""
+
     df = pd.read_csv("data/sample_ohlcv.csv", sep="\t", header=None)
 
-    df.columns = ["time", "open", "high", "low", "close", "tick_volume", "volume", "spread"]
+    df.columns = [
+        "time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "tick_volume",
+        "volume",
+        "spread",
+    ]
 
     df["time"] = pd.to_datetime(df["time"], dayfirst=True)
-
     df.set_index("time", inplace=True)
 
+    return df
+
+
+def main() -> None:
+    df = load_sample_data()
     regime_df = detect_regime(df)
 
     columns_to_show = [

@@ -1,7 +1,7 @@
 """
 Plot detected market regimes.
 
-Run from the project root:
+Run this file from the project root:
 
 python src/plot_regimes.py
 """
@@ -15,6 +15,8 @@ from regime_detector import detect_regime
 
 
 def load_sample_data() -> pd.DataFrame:
+    """Load the sample OHLCV data used in this repository."""
+
     df = pd.read_csv("data/sample_ohlcv.csv", sep="\t", header=None)
 
     df.columns = [
@@ -35,9 +37,16 @@ def load_sample_data() -> pd.DataFrame:
 
 
 def plot_regimes(df: pd.DataFrame) -> None:
+    """Create and save a price chart with detected regimes overlaid."""
+
     plt.figure(figsize=(14, 7))
 
-    plt.plot(df.index, df["close"], label="Close Price", linewidth=1)
+    plt.plot(
+        df.index,
+        df["close"],
+        label="Close Price",
+        linewidth=1,
+    )
 
     regimes = {
         "trend_expansion": "Trend Expansion",
