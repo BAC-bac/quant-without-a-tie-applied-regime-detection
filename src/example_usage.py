@@ -12,7 +12,13 @@ from regime_detector import detect_regime
 
 
 def main() -> None:
-    df = pd.read_csv("data/sample_ohlcv.csv")
+    df = pd.read_csv("data/sample_ohlcv.csv", sep="\t", header=None)
+
+    df.columns = ["time", "open", "high", "low", "close", "tick_volume", "volume", "spread"]
+
+    df["time"] = pd.to_datetime(df["time"], dayfirst=True)
+
+    df.set_index("time", inplace=True)
 
     regime_df = detect_regime(df)
 
