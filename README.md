@@ -1,26 +1,36 @@
 # Quant Without a Tie: Applied — Regime Detection
 
-This repository accompanies my Medium series, **Quant Without a Tie: Applied**.
+A minimal, research-focused implementation of market regime detection using volatility and trend structure.
 
-The aim is to show how trading concepts such as volatility, trend structure, and regime awareness can be converted into simple, testable Python code.
+This repository is part of my ongoing work to bridge trading theory, practical coding, and applied quantitative research.
 
-This is not financial advice and not a complete trading system. It is a research example designed to demonstrate how theory can become a practical framework.
+The goal is simple:
+→ Detect when market conditions change  
+→ Adapt behaviour accordingly  
 
-This project is part of my attempt to bridge trading theory, practical coding, and applied quantitative research.
+Rather than predicting price, this approach focuses on identifying when a strategy is likely to be operating in the wrong environment.
+
 ---
 
 ## Why This Project Exists
 
-Many trading strategies fail because market conditions change.
+Most trading strategies do not fail because their logic is incorrect.
 
-A strategy that works well in a clean trend may perform poorly in a noisy or low-volatility environment. This project explores a simple way to classify market regimes using:
+They fail because they are applied in the wrong market regime.
 
-- ATR-style volatility
-- EMA trend structure
-- Volatility expansion versus recent average volatility
+Regime shifts — changes in volatility, structure, and behaviour — introduce conditions where previously profitable strategies degrade or break entirely.
 
-The goal is not to predict price direction.  
-The goal is to identify when the current environment may or may not suit a particular strategy.
+This project explores a simple, interpretable framework for identifying those shifts.
+
+---
+
+## Key Features
+
+- Simple and interpretable regime classification  
+- Uses volatility (ATR-style) and trend structure (EMA)  
+- No machine learning — fully transparent logic  
+- Designed for integration into trading systems or research pipelines  
+- Lightweight and easy to extend  
 
 ---
 
@@ -44,21 +54,20 @@ quant-without-a-tie-applied-regime-detection/
 
 ## How It Works
 
-The regime detector calculates:
+The regime detector constructs a simple classification pipeline:
 
-- True Range
-- ATR-style volatility
-- 50-period EMA
-- 200-period EMA
-- Volatility expansion
-- Simple regime classification
+1. True Range (volatility proxy)  
+2. Rolling ATR estimate  
+3. EMA(50) and EMA(200) trend structure  
+4. Volatility expansion vs rolling baseline  
+5. Rule-based regime classification  
 
 Example regimes include:
 
-- `trend_expansion`
-- `volatile_or_breakdown`
-- `low_volatility`
-- `neutral`
+- `trend_expansion`  
+- `volatile_or_breakdown`  
+- `low_volatility`  
+- `neutral`  
 
 ---
 
@@ -109,35 +118,52 @@ print(regime_df.tail())
 
 The script adds additional columns to the original price data, including:
 
-- `atr_14`
-- `atr_50_mean`
-- `ema_50`
-- `ema_200`
-- `trend_up`
-- `volatility_expanding`
-- `regime`
+- `atr_14`  
+- `atr_50_mean`  
+- `ema_50`  
+- `ema_200`  
+- `trend_up`  
+- `volatility_expanding`  
+- `regime`  
 
 These columns can then be used for further research, backtesting, or trading system development.
 
-## Visual Example (Optional)
+---
 
-Below is a simple illustration of how regimes can be visualised:
+## Visual Example (Coming Soon)
 
-- Trend expansion periods
-- Low volatility compression
-- Breakdown / unstable phases
+Planned visualisation:
+- Price series with regime overlays  
+- Trend vs volatility expansion phases  
+- Identification of unstable market periods  
+
 ---
 
 ## Philosophy
 
+> Markets are not static. Strategies shouldn't be either.
+
 This project prioritises:
 
-- Simplicity over complexity
-- Robustness over optimisation
-- Adaptation over prediction
-- Clear research logic over overfitted signals
+- Simplicity over complexity  
+- Robustness over optimisation  
+- Adaptation over prediction  
+- Clear research logic over overfitted signals  
 
 The purpose is to show how a trading idea can move from concept to code.
+
+---
+
+## Limitations
+
+This implementation is intentionally simple:
+
+- No transaction cost or spread modelling  
+- Fixed thresholds (not adaptive)  
+- Not validated across multiple instruments  
+- Not integrated into a full backtesting framework  
+
+It should be viewed as a research building block, not a production system.
 
 ---
 
@@ -145,11 +171,11 @@ The purpose is to show how a trading idea can move from concept to code.
 
 Possible future additions include:
 
-- Adding spread and execution-cost filters
-- Connecting the detector to a backtest
-- Adding visual regime charts
-- Testing the logic across multiple FX symbols
-- Comparing regime behaviour across different timeframes
+- Adding spread and execution-cost filters  
+- Connecting the detector to a backtest  
+- Adding visual regime charts  
+- Testing the logic across multiple FX symbols  
+- Comparing regime behaviour across different timeframes  
 
 ---
 
@@ -158,4 +184,3 @@ Possible future additions include:
 This project is for educational and research purposes only.
 
 It is not financial advice, investment advice, or a recommendation to trade. Trading and investing involve risk, and past performance does not guarantee future results.
-
